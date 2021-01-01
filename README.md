@@ -61,4 +61,9 @@ Open Xcode, then choose "Preferences..." from the Xcode menu. Go to the Location
   use npx at a runtime rather than installing a global ```react-native-clie``` package (remove this package to avoid unexpected issues.
     
 - install react-native 
-  npx react-native init <projectname>
+  ```npx react-native init [projectname]```
+
+- run app on ios
+  ```npx react-native run-ios```
+  
+  
