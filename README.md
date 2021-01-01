@@ -2,7 +2,6 @@
 Help students to study 11 plus
 
 ## development environment
-npx react-native init MyTestApp
 
 - install node 
   ```brew install node```
@@ -65,5 +64,6 @@ Open Xcode, then choose "Preferences..." from the Xcode menu. Go to the Location
 
 - run app on ios
   ```npx react-native run-ios```
+  ```npx react-native run-android```
   
   
