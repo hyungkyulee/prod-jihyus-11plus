@@ -81,7 +81,7 @@ function App() {
     bootstrapAsync()
 
     setTimeout(() => {
-      dispatch({ type: 'LOADING_COMPLETED' })
+      // dispatch({ type: 'LOADING_COMPLETED' })
     }, 2000)
   }, [])
 
