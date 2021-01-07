@@ -67,3 +67,14 @@ Open Xcode, then choose "Preferences..." from the Xcode menu. Go to the Location
   ```npx react-native run-android```
   
   
+## google font link
+- copy the fonts to the path : /assets/fonts/
+- create a file named react-native.config.js
+  ```
+  module.exports = {
+    assets: [‘./assets/fonts’]
+  }
+  ```
+- run a linking command
+  ``` npx react-native link```
+  
