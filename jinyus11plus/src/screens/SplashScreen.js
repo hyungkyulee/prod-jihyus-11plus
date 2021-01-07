@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   Image,
+  TouchableOpacity
 } from 'react-native'
 
 import { 
@@ -25,7 +26,7 @@ const SplashScreen = ({navigation}) => {
         <Row size={2} style={styles.rowImage}>
           <Image 
             style={styles.image}
-            source={require('../../assets/images/Artwork.png')}
+            source={require('../../assets/images/splash.png')}
           />
         </Row>
         <Row size={1} style={styles.rowTagline}>
@@ -37,10 +38,13 @@ const SplashScreen = ({navigation}) => {
           <Button 
             iconRight
             style={styles.button} 
-            onPress={() => navigation.navigate('signin')}>
+            onPress={() => navigation.navigate('main')}>
             <Text style={styles.textButton}>START</Text>
             <Icon type="Feather" name="arrow-right-circle" style={styles.iconButton} />
           </Button>
+          <TouchableOpacity onPress={() => console.log('contact us...')}>
+            <Text style={styles.link}>CONTACT US</Text>
+          </TouchableOpacity>
         </Row>
       </Grid>
     </Container>
@@ -106,6 +110,12 @@ const styles = StyleSheet.create({
     marginLeft: 10, 
     paddingHorizontal: 0, 
     marginRight:0
+  },
+  link: {
+    paddingTop: 20,
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 16,
+    color: 'rgba(52,67,86,0.4)'
   }
 })
 
