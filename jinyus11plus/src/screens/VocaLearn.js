@@ -11,7 +11,12 @@ import {
   Button,
   Icon,
   Item,
-  Input
+  Input,
+  Segment,
+  Content,
+  Card,
+  CardItem,
+  Right
 } from 'native-base'
 
 import { 
@@ -22,28 +27,56 @@ import {
 import {AuthContext} from '../contexts/AuthContext'
 import CardSlide from '../components/CardSlide'
 
-const VocaBasicScreen = ({navigation}) => {
+const VocaLearn = ({navigation}) => {
   const { signOut } = React.useContext(AuthContext)
 
   return (
     <Container style={styles.container}>
       <Grid>
-        <Row size={1} style={styles.rowTagline}>
-          <Text style={styles.title}>Voca Basic</Text>
-          <Text style={styles.text}>What would you like to learn</Text>
-          <Text style={styles.text}>today? Choose below.</Text>
+        <Row size={1} style={styles.rowInnerMenu}>
+          <Segment>
+            <Button first active>
+              <Text>ALL</Text>
+            </Button>
+            <Button>
+              <Text>AWARD</Text>
+            </Button>
+            <Button last>
+              <Text>REVIEW</Text>
+            </Button>
+          </Segment>
         </Row>
-        <Row size={1} style={styles.rowSearch}>
-          <Item style={styles.search}>
-            <Input placeholder="Search" />
-            <Icon type="Ionicons" name="ios-search" style={styles.searchIcon}/>
-          </Item>
-          </Row>
-        <Row size={2} style={styles.rowSearch}>
-          <Text style={styles.subtitle}>STUDYING</Text>
-          <TouchableOpacity onPress={() => console.log('vocalearn')}>
-            <CardSlide />
-          </TouchableOpacity>
+        <Row size={2} style={styles.rowCourse}>
+          <Content padder>
+            <Text>Basic Vocabulary</Text>
+          </Content>
+        </Row>
+        <Row size={3} style={styles.rowStage}>
+          <Content style={styles.stages}>
+            <Card>
+              <CardItem>
+                <Icon active type="Entypo" name="check" />
+                <Text>Basic 01</Text>
+                <Right>
+                  <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
+                </Right>
+              </CardItem>
+              <CardItem>
+                <Icon active type="Entypo" name="dot-single" />
+                <Text>Basic 02</Text>
+                <Right>
+                  <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
+                </Right>
+              </CardItem>
+              <CardItem>
+                <Icon active type="Entypo" name="dot-single" />
+                <Text>Basic 03</Text>
+                <Right>
+                  <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
+                </Right>
+              </CardItem>
+            </Card>
+          </Content>
         </Row>
       </Grid>
     </Container>
@@ -70,32 +103,29 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor:'#F3F5F9',
   },
-  rowTagline: {
+  rowInnerMenu: {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 100,
   },
-  rowSearch: {
+  rowCourse: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
-  search: {
-    backgroundColor: '#FFFFFF',
-    width: '80%',
-    height: 60,
-    borderColor: '#3C80D116',
-    borderWidth: 1,
-    borderRadius: 20,
-    shadowColor: '#3C80D116',
-    shadowOffset: {width: 0, height: 12},
-    shadowRadius: 20,
-    shadowOpacity: 19,
-    paddingLeft: 25,
-    paddingRight: 10,
+  rowStage: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  searchIcon: {
+  stages: {
+    width: '80%',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#3C80D116',
+    borderRadius: 20,
+  },
+  startIcon: {
     fontSize: 30,
     fontWeight: 'bold',
     color: '#5468FF',
@@ -160,4 +190,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default VocaBasicScreen
+export default VocaLearn

@@ -13,7 +13,8 @@ import SignUpScreen from './src/screens/SignUpScreen'
 import ProfileScreen from './src/screens/ProfileScreen'
 import { startDetecting } from 'react-native/Libraries/Utilities/PixelRatio'
 import LoadingScreen from './src/screens/Loading'
-import VocaBasicScreen from './src/screens/VocaBasicScreen'
+import VocaLearnBasicB1 from './src/screens/VocaLearnBasicB1'
+import VocaLearn from './src/screens/VocaLearn'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -180,8 +181,8 @@ function App() {
                   }}
                 />
                 <Stack.Screen 
-                  name="vocalearn-b1" 
-                  component={VocaBasicScreen} 
+                  name="vocalearn" 
+                  component={VocaLearn} 
                   options={{
                     headerShown: false,
                   }}

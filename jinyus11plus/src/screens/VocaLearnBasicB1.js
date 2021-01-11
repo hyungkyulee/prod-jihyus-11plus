@@ -22,14 +22,14 @@ import {
 import {AuthContext} from '../contexts/AuthContext'
 import CardSlide from '../components/CardSlide'
 
-const MainScreen = ({navigation}) => {
+const VocaLearnBasicB1 = ({navigation}) => {
   const { signOut } = React.useContext(AuthContext)
 
   return (
     <Container style={styles.container}>
       <Grid>
         <Row size={1} style={styles.rowTagline}>
-          <Text style={styles.title}>Hi, Jinyus</Text>
+          <Text style={styles.title}>Voca Basic</Text>
           <Text style={styles.text}>What would you like to learn</Text>
           <Text style={styles.text}>today? Choose below.</Text>
         </Row>
@@ -41,7 +41,7 @@ const MainScreen = ({navigation}) => {
           </Row>
         <Row size={2} style={styles.rowSearch}>
           <Text style={styles.subtitle}>STUDYING</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('vocalearn')}>
+          <TouchableOpacity onPress={() => console.log('vocalearn')}>
             <CardSlide />
           </TouchableOpacity>
         </Row>
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default MainScreen
+export default VocaLearnBasicB1
