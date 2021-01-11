@@ -52,7 +52,7 @@ package:
 
 functions:
   listBooks:
-    handler: JinyusApi.Apis::JinyusApi.Apis.BooksController::List
+    handler: JinyusApis.Apis::JinyusApis.Apis.BooksController::List
     package:
       artifact: bin/Release/netcoreapp3.1/package.zip
     events:
@@ -82,7 +82,7 @@ functions:
 #      - cognitoUserPool:
 #          pool: MyUserPool
 #          trigger: PreSignUp
-#      - alb:
+#      - alb:F
 #          listenerArn: arn:aws:elasticloadbalancing:us-east-1:XXXXXX:listener/app/my-load-balancer/50dc6c495c0c9188/
 #          priority: 1
 #          conditions:

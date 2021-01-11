@@ -34,7 +34,10 @@ const VocaLearn = ({navigation}) => {
     <Container style={styles.container}>
       <Grid>
         <Row size={1} style={styles.rowInnerMenu}>
-          <Segment>
+          <Text style={styles.text}>Enter your login details to</Text>
+          <Text style={styles.text}>access your account</Text>
+  
+          {/* <Segment>
             <Button first active>
               <Text>ALL</Text>
             </Button>
@@ -44,15 +47,15 @@ const VocaLearn = ({navigation}) => {
             <Button last>
               <Text>REVIEW</Text>
             </Button>
-          </Segment>
+          </Segment> */}
         </Row>
         <Row size={2} style={styles.rowCourse}>
-          <Content padder>
+          {/* <Content padder> */}
             <Text>Basic Vocabulary</Text>
-          </Content>
+          {/* </Content> */}
         </Row>
         <Row size={3} style={styles.rowStage}>
-          <Content style={styles.stages}>
+          {/* <Content style={styles.stages}> */}
             <Card>
               <CardItem>
                 <Icon active type="Entypo" name="check" />
@@ -76,7 +79,7 @@ const VocaLearn = ({navigation}) => {
                 </Right>
               </CardItem>
             </Card>
-          </Content>
+          {/* </Content> */}
         </Row>
       </Grid>
     </Container>
