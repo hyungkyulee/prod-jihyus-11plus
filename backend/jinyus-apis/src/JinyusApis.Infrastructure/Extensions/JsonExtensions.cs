@@ -1,13 +1,24 @@
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace JinyusApis.Infrastructure.Extensions
 {
-    public class JsonExtensions
+    public static class JsonExtensions
     {
-        public static string ToJson(object toSerialize)
+        private static DefaultContractResolver _resolver = new DefaultContractResolver
         {
-            return JsonConvert.SerializeObject(toSerialize);
+            NamingStrategy = new CamelCaseNamingStrategy()
+        };
+
+        public static string ToJson(this object toSerialize)
+        {
+            return JsonConvert.SerializeObject(toSerialize,
+            new JsonSerializerSettings
+            {
+                ContractResolver = _resolver,
+                Formatting = Formatting.Indented
+            });
         }
         
     }

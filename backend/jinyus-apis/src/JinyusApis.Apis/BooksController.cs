@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
+using JinyusApis.Infrastructure.Extensions;
 using JinyusApis.Models;
 
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -33,7 +34,7 @@ namespace JinyusApis.Apis
                             Date = DateTime.UtcNow
                         }
                     }
-                }.ToString()
+                }.ToJson()
             };
         }
     }

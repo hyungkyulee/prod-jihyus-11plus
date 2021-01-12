@@ -56,7 +56,7 @@ const VocaLearn = ({navigation}) => {
         </Row>
         <Row size={3} style={styles.rowStage}>
           {/* <Content style={styles.stages}> */}
-            <Card>
+            <Card style={styles.card}>
               <CardItem>
                 <Icon active type="Entypo" name="check" />
                 <Text>Basic 01</Text>
@@ -66,14 +66,14 @@ const VocaLearn = ({navigation}) => {
               </CardItem>
               <CardItem>
                 <Icon active type="Entypo" name="dot-single" />
-                <Text>Basic 02</Text>
+                <Text>Basic fg02</Text>
                 <Right>
                   <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
                 </Right>
               </CardItem>
-              <CardItem>
+              <CardItem style={{paddingRight:0, marginRight:0}}>
                 <Icon active type="Entypo" name="dot-single" />
-                <Text>Basic 03</Text>
+                <Text>Basic 03hkjhkjh</Text>
                 <Right>
                   <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
                 </Right>
@@ -119,14 +119,19 @@ const styles = StyleSheet.create({
   },
   rowStage: {
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   stages: {
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#3C80D116',
+  },
+  card: {
     width: '80%',
     backgroundColor: '#FFFFFF',
     shadowColor: '#3C80D116',
     borderRadius: 20,
+    padding: 20,
   },
   startIcon: {
     fontSize: 30,
@@ -136,6 +141,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 12},
     shadowRadius: 10,
     shadowOpacity: 20,
+    right: 0
   },
   image: {
     width: 240,

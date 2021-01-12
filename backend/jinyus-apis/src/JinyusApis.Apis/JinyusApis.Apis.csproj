@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JinyusApis.Infrastructure\JinyusApis.Infrastructure.csproj" />
     <ProjectReference Include="..\JinyusApis.Models\JinyusApis.Models.csproj" />
   </ItemGroup>
 
