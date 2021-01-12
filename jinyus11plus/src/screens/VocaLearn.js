@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState }  from 'react'
 import {
   StyleSheet,
   Text,
@@ -29,6 +29,21 @@ import CardSlide from '../components/CardSlide'
 
 const VocaLearn = ({navigation}) => {
   const { signOut } = React.useContext(AuthContext)
+  const [books, setBooks] = useState([])
+
+  useEffect(() => {
+    (async () => {
+      try {
+        // const response = await fetch(`${config.API_HOST}/announcements`)
+        const response = await fetch('https://h6wan8jdtk.execute-api.eu-west-1.amazonaws.com/dev/books')
+        const json = await response.json()
+        setBooks(json.data)
+      } catch (error) {
+        console.log('error: ', error)
+      }
+
+    })()
+  }, [])
 
   return (
     <Container style={styles.container}>
@@ -57,28 +72,18 @@ const VocaLearn = ({navigation}) => {
         <Row size={3} style={styles.rowStage}>
           {/* <Content style={styles.stages}> */}
             <Card style={styles.card}>
-              <CardItem>
-                <Icon active type="Entypo" name="check" />
-                <Text>Basic 01</Text>
-                <Right>
-                  <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
-                </Right>
-              </CardItem>
-              <CardItem>
+              {books.map((item) => (
+              <CardItem key={item.id} style={{paddingRight:0, marginRight:0}}>
                 <Icon active type="Entypo" name="dot-single" />
-                <Text>Basic fg02</Text>
+                <Text>{item.title}</Text>
                 <Right>
                   <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
                 </Right>
               </CardItem>
-              <CardItem style={{paddingRight:0, marginRight:0}}>
-                <Icon active type="Entypo" name="dot-single" />
-                <Text>Basic 03hkjhkjh</Text>
-                <Right>
-                  <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
-                </Right>
-              </CardItem>
+              ))}
             </Card>
+            {/* <Icon active type="Entypo" name="check" />
+            <Icon active type="Entypo" name="dot-single" /> */}
           {/* </Content> */}
         </Row>
       </Grid>
