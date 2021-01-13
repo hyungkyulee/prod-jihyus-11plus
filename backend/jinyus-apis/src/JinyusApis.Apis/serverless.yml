@@ -59,7 +59,20 @@ functions:
       - http:
           path: books
           method: get
-          
+
+  getBook:
+    handler: JinyusApis.Apis::JinyusApis.Apis.BooksController::Get
+    package:
+      artifact: bin/Release/netcoreapp3.1/package.zip
+    events:
+      - http:
+          path: books/{id}
+          method: get
+          request:
+            parameters:
+              paths:
+                id:true
+        
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

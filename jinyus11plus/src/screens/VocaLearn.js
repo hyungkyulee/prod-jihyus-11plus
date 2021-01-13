@@ -1,9 +1,9 @@
-import React, { useEffect, useState }  from 'react'
+import React, { useParams, useEffect, useState }  from 'react'
 import {
   StyleSheet,
   Text,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native'
 
 import { 
@@ -16,7 +16,11 @@ import {
   Content,
   Card,
   CardItem,
-  Right
+  Right,
+  Tabs,
+  Tab,
+  ScrollableTab,
+  TabHeading,
 } from 'native-base'
 
 import { 
@@ -26,6 +30,37 @@ import {
 
 import {AuthContext} from '../contexts/AuthContext'
 import CardSlide from '../components/CardSlide'
+import BooksMenu from '../components/BooksMenu'
+
+
+const ChapterProgress = ({id}) => {
+  const [book, setBook] = useState({})
+
+  useEffect(() => {
+    (async () => {
+      try {
+        // const response = await fetch(`${config.API_HOST}/announcements`)
+        const response = await fetch(`https://h6wan8jdtk.execute-api.eu-west-1.amazonaws.com/dev/books/${id}`)
+        const json = await response.json()
+        setBook(json.data)
+      } catch (error) {
+        console.log('error: ', error)
+      }
+    })()
+  }, [id])
+
+  return (
+    <Card style={styles.card}>
+        <CardItem key={book.id} style={{paddingRight:0, marginRight:0}}>
+          <Icon active type="Entypo" name="check" />
+          <Text>{book.chapter}</Text>
+          <Right>
+            <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
+          </Right>
+        </CardItem>
+    </Card>
+  )
+}
 
 const VocaLearn = ({navigation}) => {
   const { signOut } = React.useContext(AuthContext)
@@ -48,43 +83,20 @@ const VocaLearn = ({navigation}) => {
   return (
     <Container style={styles.container}>
       <Grid>
-        <Row size={1} style={styles.rowInnerMenu}>
-          <Text style={styles.text}>Enter your login details to</Text>
-          <Text style={styles.text}>access your account</Text>
-  
-          {/* <Segment>
-            <Button first active>
-              <Text>ALL</Text>
-            </Button>
-            <Button>
-              <Text>AWARD</Text>
-            </Button>
-            <Button last>
-              <Text>REVIEW</Text>
-            </Button>
-          </Segment> */}
+        <Row size={1} style={styles.rowInnerMenu}>          
+          <Text style={styles.text}>ALL | AWARD | REVIEW</Text>  
         </Row>
-        <Row size={2} style={styles.rowCourse}>
-          {/* <Content padder> */}
-            <Text>Basic Vocabulary</Text>
-          {/* </Content> */}
-        </Row>
-        <Row size={3} style={styles.rowStage}>
-          {/* <Content style={styles.stages}> */}
-            <Card style={styles.card}>
-              {books.map((item) => (
-              <CardItem key={item.id} style={{paddingRight:0, marginRight:0}}>
-                <Icon active type="Entypo" name="dot-single" />
-                <Text>{item.title}</Text>
-                <Right>
-                  <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
-                </Right>
-              </CardItem>
-              ))}
-            </Card>
-            {/* <Icon active type="Entypo" name="check" />
-            <Icon active type="Entypo" name="dot-single" /> */}
-          {/* </Content> */}
+        <Row size={8} style={styles.rowCourse}>
+          <Tabs renderTabBar={()=> <ScrollableTab style={{ height: 140, borderWidth:0, marginBottom: 20}} />} tabBarUnderlineStyle={{ backgroundColor: 'transparent'}} >
+            {books.map((item) => (
+              <Tab heading={
+                <TabHeading><BooksMenu book={item} /></TabHeading>
+              } >
+                <ChapterProgress id={item.id} />
+                {/* <Tab1 book={item} /> */}
+              </Tab>
+            ))}
+          </Tabs>
         </Row>
       </Grid>
     </Container>
@@ -137,6 +149,9 @@ const styles = StyleSheet.create({
     shadowColor: '#3C80D116',
     borderRadius: 20,
     padding: 20,
+
+    alignSelf: 'center',
+    marginTop: 20,
   },
   startIcon: {
     fontSize: 30,

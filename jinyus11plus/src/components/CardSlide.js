@@ -23,7 +23,7 @@ import {
   Right
 } from 'native-base'
 
-const AuthForm = ({ navigation, headerText, errorMessage, onSubmit, submitButtonText }) => {
+const CardSlide = ({ navigation, headerText, errorMessage, onSubmit, submitButtonText }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -114,4 +114,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AuthForm
+export default CardSlide
