@@ -24,8 +24,6 @@ import {
 } from 'native-base'
 
 const BooksMenu = ({ navigation, book}) => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
 
   return (
     <Content style={styles.content}>

@@ -22,7 +22,7 @@ import {
 import {AuthContext} from '../contexts/AuthContext'
 import CardSlide from '../components/CardSlide'
 
-const MainScreen = ({navigation}) => {
+const HomeScreen = ({navigation}) => {
   const { signOut } = React.useContext(AuthContext)
 
   return (
@@ -41,7 +41,7 @@ const MainScreen = ({navigation}) => {
           </Row>
         <Row size={2} style={styles.rowSearch}>
           <Text style={styles.subtitle}>STUDYING</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('vocalearn')}>
+          <TouchableOpacity onPress={() => navigation.navigate('study')}>
             <CardSlide />
           </TouchableOpacity>
         </Row>
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default MainScreen
+export default HomeScreen

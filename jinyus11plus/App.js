@@ -13,17 +13,18 @@ import SignUpScreen from './src/screens/SignUpScreen'
 import ProfileScreen from './src/screens/ProfileScreen'
 import { startDetecting } from 'react-native/Libraries/Utilities/PixelRatio'
 import LoadingScreen from './src/screens/Loading'
-import VocaLearnBasicB1 from './src/screens/VocaLearnBasicB1'
-import VocaLearn from './src/screens/VocaLearn'
+import VocaLearnBasicB1 from './src/screens/MatchingWordGame'
+import StudyRoom from './src/screens/StudyRoom'
+import MatchingWordGame from './src/screens/MatchingWordGame'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 function mainFlow() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Study" component={ProfileScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="home" component={HomeScreen} />
+      <Tab.Screen name="study" component={StudyRoom} />
+      <Tab.Screen name="profile" component={ProfileScreen} />
     </Tab.Navigator>
   )
 }
@@ -181,10 +182,10 @@ function App() {
                   }}
                 />
                 <Stack.Screen 
-                  name="vocalearn" 
-                  component={VocaLearn} 
+                  name="mwgame" 
+                  component={MatchingWordGame} 
                   options={{
-                    headerShown: false,
+                    headerShown: true,
                   }}
                 />
               </>

@@ -10,10 +10,6 @@ import {
   Container, 
   Button,
   Icon,
-  Item,
-  Input,
-  Segment,
-  Content,
   Card,
   CardItem,
   Right,
@@ -29,40 +25,11 @@ import {
 } from 'react-native-easy-grid'
 
 import {AuthContext} from '../contexts/AuthContext'
-import CardSlide from '../components/CardSlide'
 import BooksMenu from '../components/BooksMenu'
+import ChapterProgress from '../components/ChapterProgress'
 
 
-const ChapterProgress = ({id}) => {
-  const [book, setBook] = useState({})
-
-  useEffect(() => {
-    (async () => {
-      try {
-        // const response = await fetch(`${config.API_HOST}/announcements`)
-        const response = await fetch(`https://h6wan8jdtk.execute-api.eu-west-1.amazonaws.com/dev/books/${id}`)
-        const json = await response.json()
-        setBook(json.data)
-      } catch (error) {
-        console.log('error: ', error)
-      }
-    })()
-  }, [id])
-
-  return (
-    <Card style={styles.card}>
-        <CardItem key={book.id} style={{paddingRight:0, marginRight:0}}>
-          <Icon active type="Entypo" name="check" />
-          <Text>{book.chapter}</Text>
-          <Right>
-            <Icon type="Feather" name="arrow-right-circle" style={styles.startIcon} />
-          </Right>
-        </CardItem>
-    </Card>
-  )
-}
-
-const VocaLearn = ({navigation}) => {
+const StudyRoom = ({navigation}) => {
   const { signOut } = React.useContext(AuthContext)
   const [books, setBooks] = useState([])
 
@@ -83,17 +50,18 @@ const VocaLearn = ({navigation}) => {
   return (
     <Container style={styles.container}>
       <Grid>
-        <Row size={1} style={styles.rowInnerMenu}>          
-          <Text style={styles.text}>ALL | AWARD | REVIEW</Text>  
+        <Row size={1} style={styles.rowInnerMenu}>
+          <Button style={styles.button}><Text style={styles.textButton}>ALL</Text></Button>
+          <Button style={styles.button}><Text style={styles.textButton}>AWARD</Text></Button>
+          <Button style={styles.button}><Text style={styles.textButton}>REVIEW</Text></Button>
         </Row>
         <Row size={8} style={styles.rowCourse}>
           <Tabs renderTabBar={()=> <ScrollableTab style={{ height: 140, borderWidth:0, marginBottom: 20}} />} tabBarUnderlineStyle={{ backgroundColor: 'transparent'}} >
             {books.map((item) => (
-              <Tab heading={
-                <TabHeading><BooksMenu book={item} /></TabHeading>
-              } >
-                <ChapterProgress id={item.id} />
-                {/* <Tab1 book={item} /> */}
+              <Tab 
+                heading={<TabHeading><BooksMenu book={item} /></TabHeading>}
+                style={{ backgroundColor:'transparent'}}>
+                <ChapterProgress navigation={navigation} id={item.id} />
               </Tab>
             ))}
           </Tabs>
@@ -124,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#F3F5F9',
   },
   rowInnerMenu: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 100,
@@ -133,15 +101,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
-  },
-  rowStage: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  stages: {
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#3C80D116',
   },
   card: {
     width: '80%',
@@ -191,15 +150,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    width: 160,
-    height: 60,
-    backgroundColor: '#5468FF',
-    borderRadius: 20,
+    width: 100,
+    height: 44,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    shadowColor: '#3C80D116',
+    shadowOffset: {width: 0, height: 12},
+    shadowRadius: 10,
+    shadowOpacity: 20,
+    marginHorizontal: -3
   },
   textButton: {
-    fontFamily: 'Montserrat-Bold',
-    fontSize: 18,
-    color: '#FFF',
+    fontFamily: 'Montserrat-Light',
+    fontSize: 14,
+    color: '#344356',
   },
   iconButton: {
     alignSelf: 'center',
@@ -219,4 +183,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default VocaLearn
+export default StudyRoom
