@@ -130,7 +130,14 @@ function App() {
           ) : (
           state.userToken == null ? (
             <>
-              <Stack.Screen
+              <Stack.Screen 
+                name="splash" 
+                component={SplashScreen} 
+                options={{
+                  headerShown: false,
+                }}
+              />
+              {/* <Stack.Screen
                 name="signin"
                 component={SignInScreen}
                 options={{
@@ -163,7 +170,7 @@ function App() {
                   },
                   animationTypeForReplace: state.isSignout ? 'pop' : 'push'
                 }}
-              />
+              /> */}
             </>
             ) : (
               <>

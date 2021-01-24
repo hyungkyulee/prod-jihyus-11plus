@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useEffect, useCallback} from 'react'
 import {
+  Platform,
   StyleSheet,
   Text,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Linking,
+  Alert
 } from 'react-native'
+import SafariView from 'react-native-safari-view'
+import InAppBrowser from 'react-native-inappbrowser-reborn'
+import Url from 'url'
 
 import { 
   Container, 
@@ -18,8 +24,45 @@ import {
 } from 'react-native-easy-grid'
 
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+const HOST_URI = "https://jinyus-dev-dintent.auth.eu-west-1.amazoncognito.com"
+const CLIENT_ID = "5bsi426ui1lemdn9i0e3a1nt2a&response_type=token&scope=aws.cognito.signin.user.admin+email+openid+phone+profile"
+const loginURL = `${HOST_URI}/login?client_id=${CLIENT_ID}&redirect_uri=http://localhost:8081`
 
 const SplashScreen = ({navigation}) => {
+
+  const getDeepLink = (path = "") => {
+    const scheme = 'jinyusapp'
+    const prefix = Platform.OS == 'android' ? `${scheme}://my-host/` : `${scheme}://`
+    return prefix + path
+  }
+
+  const onLogin = async () => {
+    const deepLink = getDeepLink("callback")
+    const url = `${HOST_URI}/login?client_id=${CLIENT_ID}&redirect_uri=${deepLink}` 
+    try {
+      await InAppBrowser.isAvailable()
+      InAppBrowser.openAuth(url, deepLink, {
+        // iOS Properties
+        dismissButtonStyle: 'cancel',
+        // Android Properties
+        showTitle: false,
+        enableUrlBarHiding: true,
+        enableDefaultShare: true,
+      }).then((response) => {
+        console.log(">>> ", response)
+        if (response.type === 'success' && 
+          response.url) {
+          /* store the id_token */
+          const id_token = Url.parse(response.url).hash.slice("#id_token=".length)
+          console.log(id_token)
+          Linking.openURL(response.url)
+        }
+      })
+    } catch (error) {
+      Linking.openURL(url)
+    }
+  }
+
   return (
     <Container style={styles.container}>
       <Grid>
@@ -38,11 +81,13 @@ const SplashScreen = ({navigation}) => {
           <Button 
             iconRight
             style={styles.button} 
-            onPress={() => navigation.navigate('main')}>
+            onPress={() => onLogin()}
+            // onPress={() => navigation.navigate('main')}
+          >
             <Text style={styles.textButton}>START</Text>
             <Icon type="Feather" name="arrow-right-circle" style={styles.iconButton} />
           </Button>
-          <TouchableOpacity onPress={() => console.log('contact us...')}>
+          <TouchableOpacity onPress={() => console.log('contact us')}>
             <Text style={styles.link}>CONTACT US</Text>
           </TouchableOpacity>
         </Row>

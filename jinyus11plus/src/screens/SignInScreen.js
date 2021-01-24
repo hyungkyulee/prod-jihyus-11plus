@@ -33,7 +33,7 @@ const SignInScreen = ({navigation}) => {
           <Text style={styles.text}>Enter your login details to</Text>
           <Text style={styles.text}>access your account</Text>
         </Row>
-        <Row size={85} style={styles.rowBody}>
+        {/* <Row size={85} style={styles.rowBody}>
           <AuthForm
             navigation={navigation}
             headerText="Sign In to your Acoount"
@@ -41,6 +41,9 @@ const SignInScreen = ({navigation}) => {
             onSubmit={() => signIn({ username, password })}
             submitButtonText="Sign In"
           />
+        </Row> */}
+        <Row size={85} style={styles.rowBody}>
+          
         </Row>
       </Grid>
     </Container>

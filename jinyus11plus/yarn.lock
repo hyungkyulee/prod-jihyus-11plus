@@ -6018,6 +6018,11 @@
   "resolved" "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz"
   "version" "2.1.1"
 
+"punycode@1.3.2":
+  "integrity" "sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0="
+  "resolved" "https://registry.npmjs.org/punycode/-/punycode-1.3.2.tgz"
+  "version" "1.3.2"
+
 "qs@~6.5.2":
   "integrity" "sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA=="
   "resolved" "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz"
@@ -6031,6 +6036,11 @@
     "decode-uri-component" "^0.2.0"
     "split-on-first" "^1.0.0"
     "strict-uri-encode" "^2.0.0"
+
+"querystring@0.2.0":
+  "integrity" "sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA="
+  "resolved" "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz"
+  "version" "0.2.0"
 
 "raf@^3.1.0":
   "integrity" "sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA=="
@@ -6083,6 +6093,14 @@
     "invariant" "^2.2.4"
     "prop-types" "^15.7.2"
 
+"react-native-inappbrowser-reborn@^3.5.1":
+  "integrity" "sha512-pEM9DSvW3LYoI7x1sfr4GtTA1/BSzSoQvHeNRtbJwOpujgRBqnEQrapBwC/24l2pIRhKDWmXGfqc12478IXY3Q=="
+  "resolved" "https://registry.npmjs.org/react-native-inappbrowser-reborn/-/react-native-inappbrowser-reborn-3.5.1.tgz"
+  "version" "3.5.1"
+  dependencies:
+    "invariant" "^2.2.4"
+    "opencollective-postinstall" "^2.0.2"
+
 "react-native-iphone-x-helper@^1.0.3", "react-native-iphone-x-helper@^1.3.0":
   "integrity" "sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg=="
   "resolved" "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
@@ -6094,6 +6112,11 @@
   "version" "1.13.2"
   dependencies:
     "fbjs" "^1.0.0"
+
+"react-native-safari-view@^2.1.0":
+  "integrity" "sha1-HgzRLGK855vBdZx+KBZGsIthyVk="
+  "resolved" "https://registry.npmjs.org/react-native-safari-view/-/react-native-safari-view-2.1.0.tgz"
+  "version" "2.1.0"
 
 "react-native-safe-area-context@^3.1.9", "react-native-safe-area-context@>= 0.6.0":
   "integrity" "sha512-wmcGbdyE/vBSL5IjDPReoJUEqxkZsywZw5gPwsVUV1NBpw5eTIdnL6Y0uNKHE25Z661moxPHQz6kwAkYQyorxA=="
@@ -6144,7 +6167,7 @@
     "use-subscription" "^1.0.0"
     "whatwg-fetch" "^3.0.0"
 
-"react-native@*", "react-native@^0.63.0-0", "react-native@>=0.38.0", "react-native@>=0.42.0", "react-native@>=0.43.0", "react-native@>=0.56.0", "react-native@>=0.57", "react-native@>=0.59", "react-native@>=0.60", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>=0.63.0", "react-native@0.63.4":
+"react-native@*", "react-native@^0.63.0-0", "react-native@>=0.38.0", "react-native@>=0.42.0", "react-native@>=0.43.0", "react-native@>=0.56", "react-native@>=0.56.0", "react-native@>=0.57", "react-native@>=0.59", "react-native@>=0.60", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>=0.63.0", "react-native@0.63.4":
   "integrity" "sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw=="
   "resolved" "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz"
   "version" "0.63.4"
@@ -7463,6 +7486,14 @@
   "integrity" "sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI="
   "resolved" "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz"
   "version" "0.1.0"
+
+"url@^0.11.0":
+  "integrity" "sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE="
+  "resolved" "https://registry.npmjs.org/url/-/url-0.11.0.tgz"
+  "version" "0.11.0"
+  dependencies:
+    "punycode" "1.3.2"
+    "querystring" "0.2.0"
 
 "use-subscription@^1.0.0":
   "integrity" "sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA=="
