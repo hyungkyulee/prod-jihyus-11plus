@@ -78,3 +78,12 @@ Open Xcode, then choose "Preferences..." from the Xcode menu. Go to the Location
 - run a linking command
   ``` npx react-native link```
   
+
+## Authentication
+
+### app scheme
+InAppBrowser Example : https://reactnativeexample.com/inappbrowser-for-react-native/ 
+redirect url of mobile for oauth2 should be aligned with app url scheme
+ : reference: https://blog.jscrambler.com/how-to-handle-deep-linking-in-a-react-native-app/
+storing at the local storage : https://reactnative.dev/docs/asyncstorage 
+
